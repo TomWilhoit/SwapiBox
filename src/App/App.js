@@ -4,6 +4,7 @@ import Landing from "../Landing/Landing";
 import Planets from "../Planets/Planets";
 import People from "../People/People";
 import Vehicles from "../Vehicles/Vehicles";
+import { fetchData } from "../utils/API"
 
 class App extends Component {
   constructor() {
@@ -11,22 +12,93 @@ class App extends Component {
     this.state = {
       landingPage: "landing",
       films: [],
-      randomNum: 0
+      randomNum: 0,
+      people: [],
+      vehicles: [],
+      planets: []
     };
   }
 
   componentDidMount() {
     const url = "https://swapi.co/api/films";
-    fetch(url)
-      .then(response => response.json())
+    fetchData(url)
       .then(data =>
         this.setState({
           films: data
         })
       )
       .catch(error => error.message);
+      // this error message should be set in state
     this.randomNumberGen();
+    this.fetchPeople();
+    this.fetchVehicles();
+    this.getPlanets();
   }
+
+  fetchPeople = () => {
+    const url = "https://swapi.co/api/people";
+    fetchData(url)
+      .then(data => this.fetchHomeworlds(data.results))
+      .then(homePlanets =>
+        this.setState({
+          people: homePlanets
+        })
+      )
+      .catch(error => error.message);
+  };
+
+  fetchHomeworlds = array => {
+    const unresolvedPromises = array.map(person => {
+      return fetchData(person.homeworld)
+        .then(data => ({
+          planetName: data.name,
+          personName: person.name,
+          population: data.population
+        }))
+        .catch(error => error.message);
+    });
+    return Promise.all(unresolvedPromises);
+  };
+
+  fetchVehicles = () => {
+    const url = "https://swapi.co/api/vehicles";
+    fetchData(url)
+      .then(data =>
+        this.setState({
+          vehicles: data.results
+        })
+      )
+      .catch(error => error.message);
+  };
+
+  getPlanets = () => {
+    const planetUrl = "https://swapi.co/api/planets";
+    fetchData(planetUrl)
+      .then(planets => this.addResidents(planets))
+      .then(planets => this.setState({ planets: planets }))
+      .catch(error => this.setState({ error: error.message }));
+  };
+
+  addResidents(planets) {
+    const addedResidents = planets.results.map(planet => {
+      return this.getResidents(planet).then(result => ({
+        ...planet,
+        residents: result,
+        category: "planet"
+      }));
+    });
+    return Promise.all(addedResidents);
+  }
+
+  getResidents(planet) {
+    const residents = planet.residents.map(resident => {
+      return fetchData(resident)
+        .then(result => result.name);
+    });
+    return Promise.all(residents);
+  }
+
+  //
 
   goToMain = () => {
     this.setState({
@@ -60,7 +132,6 @@ class App extends Component {
 
   randomNumberGen = () => {
     let ranNum = Math.floor(Math.random() * 6);
-    console.log(ranNum);
     this.setState({
       randomNum: ranNum
     });
@@ -112,6 +183,7 @@ class App extends Component {
         return (
           <div className="vehicles-page">
             <Vehicles
+              vehiclesArray={this.state.vehicles}
               goToPeople={this.goToPeople}
               goToPlanets={this.goToPlanets}
               goToMain={this.goToMain}
@@ -122,6 +194,7 @@ class App extends Component {
         return (
           <div className="planets-page">
             <Planets
+              planetsArray={this.state.planets}
               goToVehicles={this.goToVehicles}
               goToPeople={this.goToPeople}
               goToMain={this.goToMain}
@@ -135,6 +208,7 @@ class App extends Component {
               goToVehicles={this.goToVehicles}
               goToPlanets={this.goToPlanets}
               goToMain={this.goToMain}
+              peopleArray={this.state.people}
             />
           </div>
         );
