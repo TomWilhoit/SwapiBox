@@ -1,0 +1,927 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`People should match snapshot when all data is passed correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <People
+    peopleArray={
+      Array [
+        1,
+        2,
+        3,
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1
+          className="title"
+        >
+          People
+        </h1>,
+        <div
+          buttons={true}
+          className="button-container"
+        >
+          <button
+            className="btn"
+          >
+            MAIN
+          </button>
+          <button
+            className="btn"
+          >
+            PLANETS
+          </button>
+          <button
+            className="btn"
+          >
+            VEHICLES
+          </button>
+        </div>,
+        <div
+          className="card-container"
+        >
+          <div
+            className="card"
+          >
+            <p>
+              Name: 
+            </p>
+            <p>
+              Homeworld: 
+            </p>
+            <p>
+              Population: 
+            </p>
+          </div>
+          <div
+            className="card"
+          >
+            <p>
+              Name: 
+            </p>
+            <p>
+              Homeworld: 
+            </p>
+            <p>
+              Population: 
+            </p>
+          </div>
+          <div
+            className="card"
+          >
+            <p>
+              Name: 
+            </p>
+            <p>
+              Homeworld: 
+            </p>
+            <p>
+              Population: 
+            </p>
+          </div>
+        </div>,
+      ],
+      "className": "People",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "People",
+          "className": "title",
+        },
+        "ref": null,
+        "rendered": "People",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "buttons": true,
+          "children": Array [
+            <button
+              className="btn"
+            >
+              MAIN
+            </button>,
+            <button
+              className="btn"
+            >
+              PLANETS
+            </button>,
+            <button
+              className="btn"
+            >
+              VEHICLES
+            </button>,
+          ],
+          "className": "button-container",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "MAIN",
+              "className": "btn",
+              "onClick": undefined,
+            },
+            "ref": null,
+            "rendered": "MAIN",
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "PLANETS",
+              "className": "btn",
+              "onClick": undefined,
+            },
+            "ref": null,
+            "rendered": "PLANETS",
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "VEHICLES",
+              "className": "btn",
+              "onClick": undefined,
+            },
+            "ref": null,
+            "rendered": "VEHICLES",
+            "type": "button",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="card"
+            >
+              <p>
+                Name: 
+              </p>
+              <p>
+                Homeworld: 
+              </p>
+              <p>
+                Population: 
+              </p>
+            </div>,
+            <div
+              className="card"
+            >
+              <p>
+                Name: 
+              </p>
+              <p>
+                Homeworld: 
+              </p>
+              <p>
+                Population: 
+              </p>
+            </div>,
+            <div
+              className="card"
+            >
+              <p>
+                Name: 
+              </p>
+              <p>
+                Homeworld: 
+              </p>
+              <p>
+                Population: 
+              </p>
+            </div>,
+          ],
+          "className": "card-container",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p>
+                  Name: 
+                </p>,
+                <p>
+                  Homeworld: 
+                </p>,
+                <p>
+                  Population: 
+                </p>,
+              ],
+              "className": "card",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Name: ",
+                    undefined,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Name: ",
+                  undefined,
+                ],
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Homeworld: ",
+                    undefined,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Homeworld: ",
+                  undefined,
+                ],
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Population: ",
+                    undefined,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Population: ",
+                  undefined,
+                ],
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p>
+                  Name: 
+                </p>,
+                <p>
+                  Homeworld: 
+                </p>,
+                <p>
+                  Population: 
+                </p>,
+              ],
+              "className": "card",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Name: ",
+                    undefined,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Name: ",
+                  undefined,
+                ],
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Homeworld: ",
+                    undefined,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Homeworld: ",
+                  undefined,
+                ],
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Population: ",
+                    undefined,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Population: ",
+                  undefined,
+                ],
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p>
+                  Name: 
+                </p>,
+                <p>
+                  Homeworld: 
+                </p>,
+                <p>
+                  Population: 
+                </p>,
+              ],
+              "className": "card",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Name: ",
+                    undefined,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Name: ",
+                  undefined,
+                ],
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Homeworld: ",
+                    undefined,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Homeworld: ",
+                  undefined,
+                ],
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Population: ",
+                    undefined,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Population: ",
+                  undefined,
+                ],
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1
+            className="title"
+          >
+            People
+          </h1>,
+          <div
+            buttons={true}
+            className="button-container"
+          >
+            <button
+              className="btn"
+            >
+              MAIN
+            </button>
+            <button
+              className="btn"
+            >
+              PLANETS
+            </button>
+            <button
+              className="btn"
+            >
+              VEHICLES
+            </button>
+          </div>,
+          <div
+            className="card-container"
+          >
+            <div
+              className="card"
+            >
+              <p>
+                Name: 
+              </p>
+              <p>
+                Homeworld: 
+              </p>
+              <p>
+                Population: 
+              </p>
+            </div>
+            <div
+              className="card"
+            >
+              <p>
+                Name: 
+              </p>
+              <p>
+                Homeworld: 
+              </p>
+              <p>
+                Population: 
+              </p>
+            </div>
+            <div
+              className="card"
+            >
+              <p>
+                Name: 
+              </p>
+              <p>
+                Homeworld: 
+              </p>
+              <p>
+                Population: 
+              </p>
+            </div>
+          </div>,
+        ],
+        "className": "People",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "People",
+            "className": "title",
+          },
+          "ref": null,
+          "rendered": "People",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "buttons": true,
+            "children": Array [
+              <button
+                className="btn"
+              >
+                MAIN
+              </button>,
+              <button
+                className="btn"
+              >
+                PLANETS
+              </button>,
+              <button
+                className="btn"
+              >
+                VEHICLES
+              </button>,
+            ],
+            "className": "button-container",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "MAIN",
+                "className": "btn",
+                "onClick": undefined,
+              },
+              "ref": null,
+              "rendered": "MAIN",
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "PLANETS",
+                "className": "btn",
+                "onClick": undefined,
+              },
+              "ref": null,
+              "rendered": "PLANETS",
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "VEHICLES",
+                "className": "btn",
+                "onClick": undefined,
+              },
+              "ref": null,
+              "rendered": "VEHICLES",
+              "type": "button",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="card"
+              >
+                <p>
+                  Name: 
+                </p>
+                <p>
+                  Homeworld: 
+                </p>
+                <p>
+                  Population: 
+                </p>
+              </div>,
+              <div
+                className="card"
+              >
+                <p>
+                  Name: 
+                </p>
+                <p>
+                  Homeworld: 
+                </p>
+                <p>
+                  Population: 
+                </p>
+              </div>,
+              <div
+                className="card"
+              >
+                <p>
+                  Name: 
+                </p>
+                <p>
+                  Homeworld: 
+                </p>
+                <p>
+                  Population: 
+                </p>
+              </div>,
+            ],
+            "className": "card-container",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "0",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p>
+                    Name: 
+                  </p>,
+                  <p>
+                    Homeworld: 
+                  </p>,
+                  <p>
+                    Population: 
+                  </p>,
+                ],
+                "className": "card",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Name: ",
+                      undefined,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Name: ",
+                    undefined,
+                  ],
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Homeworld: ",
+                      undefined,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Homeworld: ",
+                    undefined,
+                  ],
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Population: ",
+                      undefined,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Population: ",
+                    undefined,
+                  ],
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "1",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p>
+                    Name: 
+                  </p>,
+                  <p>
+                    Homeworld: 
+                  </p>,
+                  <p>
+                    Population: 
+                  </p>,
+                ],
+                "className": "card",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Name: ",
+                      undefined,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Name: ",
+                    undefined,
+                  ],
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Homeworld: ",
+                      undefined,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Homeworld: ",
+                    undefined,
+                  ],
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Population: ",
+                      undefined,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Population: ",
+                    undefined,
+                  ],
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "2",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p>
+                    Name: 
+                  </p>,
+                  <p>
+                    Homeworld: 
+                  </p>,
+                  <p>
+                    Population: 
+                  </p>,
+                ],
+                "className": "card",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Name: ",
+                      undefined,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Name: ",
+                    undefined,
+                  ],
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Homeworld: ",
+                      undefined,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Homeworld: ",
+                    undefined,
+                  ],
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Population: ",
+                      undefined,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Population: ",
+                    undefined,
+                  ],
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../Vehicles/Vehicles.css";
+import "../Vehicles/Vehicles.scss";
 
 class Vehicles extends Component {
   constructor() {
@@ -9,7 +9,7 @@ class Vehicles extends Component {
   returnVehicles = () => {
     let vehicleItem = this.props.vehiclesArray.map((vehicle, index) => {
       return (
-        <div key={index} className="vehicle-container">
+        <div key={index} className="card">
           <p>Name: {vehicle.name}</p>
           <p>Model: {vehicle.model}</p>
           <p>Class: {vehicle.vehicle_class}</p>
@@ -27,10 +27,18 @@ class Vehicles extends Component {
       return (
         <div className="Vehicles">
           <h1 className="title">Vehicles</h1>
-          <div>{this.returnVehicles()}</div>
-          <button onClick={this.props.goToMain}>MAIN</button>
-          <button onClick={this.props.goToPeople}>PEOPLE</button>
-          <button onClick={this.props.goToPlanets}>PLANETS</button>
+          <div className="button-container">
+            <button className="btn" onClick={this.props.goToMain}>
+              MAIN
+            </button>
+            <button className="btn" onClick={this.props.goToPeople}>
+              PEOPLE
+            </button>
+            <button className="btn" onClick={this.props.goToPlanets}>
+              PLANETS
+            </button>
+          </div>
+          <div className="card-container">{this.returnVehicles()}</div>
         </div>
       );
     }

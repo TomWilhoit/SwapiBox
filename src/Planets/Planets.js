@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import App from "../App/App";
-import "../Planets/Planets.css";
+import "../Planets/Planets.scss";
 
 class Planets extends Component {
   constructor() {
@@ -10,7 +9,7 @@ class Planets extends Component {
   returnPlanets = () => {
     const planetItem = this.props.planetsArray.map((planet, index) => {
       return (
-        <div key={index} className="planet-container">
+        <div key={index} className="card">
           <p>Name: {planet.name}</p>
           <p>Terrain: {planet.terrain}</p>
           <p>Population: {planet.population}</p>
@@ -19,7 +18,7 @@ class Planets extends Component {
             Residents:
             {planet.residents.map((resident, index) => {
               if (planet.residents.length - 1 === index) {
-                return <span> {resident} </span>;
+                return <span key={index}> {resident} </span>;
               } else {
                 return <span> {resident},</span>;
               }
@@ -38,16 +37,18 @@ class Planets extends Component {
       return (
         <div className="Planets">
           <h1 className="title">Planets</h1>
-          <div>{this.returnPlanets()}</div>
-          <button className="btn" onClick={this.props.goToMain}>
-            MAIN
-          </button>
-          <button className="btn" onClick={this.props.goToPeople}>
-            PEOPLE
-          </button>
-          <button className="btn" onClick={this.props.goToVehicles}>
-            VEHICLES
-          </button>
+          <div className="button-container">
+            <button className="btn" onClick={this.props.goToMain}>
+              MAIN
+            </button>
+            <button className="btn" onClick={this.props.goToPeople}>
+              PEOPLE
+            </button>
+            <button className="btn" onClick={this.props.goToVehicles}>
+              VEHICLES
+            </button>
+          </div>
+            <div className="card-container">{this.returnPlanets()}</div>
         </div>
       );
     }

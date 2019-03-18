@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./App.scss";
 import Landing from "../Landing/Landing";
 import Planets from "../Planets/Planets";
 import People from "../People/People";
 import Vehicles from "../Vehicles/Vehicles";
-import { fetchData } from "../utils/API"
+import { fetchData } from "../utils/API";
+import jarjar from "../images/jarjar.jpg";
 
 class App extends Component {
   constructor() {
@@ -15,7 +16,7 @@ class App extends Component {
       randomNum: 0,
       people: [],
       vehicles: [],
-      planets: []
+      planets: [],
     };
   }
 
@@ -28,7 +29,7 @@ class App extends Component {
         })
       )
       .catch(error => error.message);
-      // this error message should be set in state
+    // this error message should be set in state
     this.randomNumberGen();
     this.fetchPeople();
     this.fetchVehicles();
@@ -92,8 +93,7 @@ class App extends Component {
 
   getResidents(planet) {
     const residents = planet.residents.map(resident => {
-      return fetchData(resident)
-        .then(result => result.name);
+      return fetchData(resident).then(result => result.name);
     });
     return Promise.all(residents);
   }
@@ -164,19 +164,24 @@ class App extends Component {
       } else if (this.state.landingPage === "main") {
         return (
           <div className="main-page">
-            <div className="title">SwapiBox</div>
-            <button onClick={this.goToLanding} className="return-landing-btn">
-              Go Back to Landing
-            </button>
-            <button onClick={this.goToVehicles} className="go-to-vehicles-btn">
-              Go to Vehicles
-            </button>
-            <button onClick={this.goToPlanets} className="go-to-planets-btn">
-              Go Planets
-            </button>
-            <button onClick={this.goToPeople} className="go-to-people-btn">
-              Go People
-            </button>
+            <h1 className="title">SwapiBox</h1>
+            <div className="button-container">
+              <button onClick={this.goToLanding} className="main-btns">
+                Go Back to Landing
+              </button>
+              <button onClick={this.goToVehicles} className="main-btns">
+                Go to Vehicles
+              </button>
+              <button onClick={this.goToPlanets} className="main-btns">
+                Go Planets
+              </button>
+              <button onClick={this.goToPeople} className="main-btns">
+                Go People
+              </button>
+            </div>
+            <div className="img-container">
+              <img className="img" alt="jarjar" src={jarjar} />
+            </div>
           </div>
         );
       } else if (this.state.landingPage === "vehicles") {

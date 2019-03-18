@@ -1,0 +1,25 @@
+body{
+  background-color: lightblue;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around
+}
+
+.card{
+  border-style: solid;
+  background-color: white;
+  width: 200px;
+  margin: 25px auto;
+  border-radius: 10px
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%
+}
+
+.title {
+  text-align: center
+}
