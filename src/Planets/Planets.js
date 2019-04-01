@@ -1,29 +1,19 @@
 import React, { Component } from "react";
 import "../Planets/Planets.scss";
+import { connect } from "react-redux";
 
 class Planets extends Component {
-  constructor() {
-    super();
-  }
-
   returnPlanets = () => {
-    const planetItem = this.props.planetsArray.map((planet, index) => {
+    const planetItem = this.props.planets.map((planet, index) => {
       return (
         <div key={index} className="card">
           <p>Name: {planet.name}</p>
           <p>Terrain: {planet.terrain}</p>
           <p>Population: {planet.population}</p>
           <p>Climate: {planet.climate}</p>
-          <p>
-            Residents:
-            {planet.residents.map((resident, index) => {
-              if (planet.residents.length - 1 === index) {
-                return <span key={index}> {resident} </span>;
-              } else {
-                return <span> {resident},</span>;
-              }
-            })}
-          </p>
+          <li>Residents:{planet.residents.map((resident,index) => {
+            return(<ul key={index}>{resident}</ul>)
+          })}</li>
         </div>
       );
     });
@@ -31,7 +21,7 @@ class Planets extends Component {
   };
 
   render() {
-    if (this.props.planetsArray.length === 0) {
+    if (this.props.planets.length === 0) {
       return <div>LOADING</div>;
     } else {
       return (
@@ -48,11 +38,21 @@ class Planets extends Component {
               VEHICLES
             </button>
           </div>
-            <div className="card-container">{this.returnPlanets()}</div>
+          <div className="card-container">{this.returnPlanets()}</div>
         </div>
       );
     }
   }
 }
 
-export default Planets;
+export const mapStateToProps = state => ({
+  films: state.films,
+  vehicles: state.vehicles,
+  planets: state.planets,
+  people: state.people
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(Planets);
