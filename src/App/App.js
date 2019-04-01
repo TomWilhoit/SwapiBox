@@ -6,99 +6,79 @@ import People from "../People/People";
 import Vehicles from "../Vehicles/Vehicles";
 import { fetchData } from "../utils/API";
 import jarjar from "../images/jarjar.jpg";
+import { getFilms, getVehicles, getPeople, getPlanets } from "../actions/index";
+import { connect } from "react-redux";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       landingPage: "landing",
-      films: [],
-      randomNum: 0,
-      people: [],
-      vehicles: [],
-      planets: [],
+      randomNum: 0
     };
   }
 
   componentDidMount() {
-    const url = "https://swapi.co/api/films";
-    fetchData(url)
-      .then(data =>
-        this.setState({
-          films: data
-        })
-      )
-      .catch(error => error.message);
-    // this error message should be set in state
+    this.fetchFilms();
     this.randomNumberGen();
     this.fetchPeople();
     this.fetchVehicles();
-    this.getPlanets();
+    this.fetchPlanets();
   }
 
-  fetchPeople = () => {
+  fetchFilms = async () => {
+    const url = "https://swapi.co/api/films";
+    const data = await fetchData(url);
+    this.props.getFilms(data.results);
+  };
+
+  fetchPeople = async () => {
     const url = "https://swapi.co/api/people";
-    fetchData(url)
-      .then(data => this.fetchHomeworlds(data.results))
-      .then(homePlanets =>
-        this.setState({
-          people: homePlanets
-        })
-      )
-      .catch(error => error.message);
+    const data = await fetchData(url);
+    const result = await this.fetchHomeworlds(data.results)
+    console.log(result)
+    this.props.getPeople(result);
   };
 
-  fetchHomeworlds = array => {
-    const unresolvedPromises = array.map(person => {
-      return fetchData(person.homeworld)
-        .then(data => ({
-          planetName: data.name,
-          personName: person.name,
-          population: data.population
-        }))
-        .catch(error => error.message);
+  fetchHomeworlds = async (data) => {
+    const unresolvedPromises = data.map(async person => {
+      const result = await fetchData(person.homeworld)
+      const results = await { ...person, homeworld: result.name, population: result.population};
+      return results
     });
-    return Promise.all(unresolvedPromises);
+    return await Promise.all(unresolvedPromises);
   };
 
-  fetchVehicles = () => {
+  fetchVehicles = async () => {
     const url = "https://swapi.co/api/vehicles";
-    fetchData(url)
-      .then(data =>
-        this.setState({
-          vehicles: data.results
-        })
-      )
-      .catch(error => error.message);
+    const data = await fetchData(url);
+    this.props.getVehicles(data.results);
   };
 
-  getPlanets = () => {
-    const planetUrl = "https://swapi.co/api/planets";
-    fetchData(planetUrl)
-      .then(planets => this.addResidents(planets))
-      .then(planets => this.setState({ planets: planets }))
-      .catch(error => this.setState({ error: error.message }));
+  fetchPlanets = async () => {
+    const url = "https://swapi.co/api/planets";
+    const data = await fetchData(url);
+    const results = await this.addResidents(data.results);
+    this.props.getPlanets(results);
   };
 
-  addResidents(planets) {
-    const addedResidents = planets.results.map(planet => {
-      return this.getResidents(planet).then(result => ({
-        ...planet,
-        residents: result,
-        category: "planet"
-      }));
-    });
-    return Promise.all(addedResidents);
-  }
-
-  getResidents(planet) {
-    const residents = planet.residents.map(resident => {
-      return fetchData(resident).then(result => result.name);
+  fetchResident = async data => {
+    const residents = data.map(async resident => {
+      const response = await fetchData(resident);
+      const result = response.name;
+      return result;
     });
     return Promise.all(residents);
-  }
+  };
 
-  //
+  addResidents = async data => {
+    const addedResidents = data.map(async planet => {
+      const response = await this.fetchResident(planet.residents);
+      const results = { ...planet, residents: response, category: "planet" };
+      return results;
+    });
+    return Promise.all(addedResidents);
+  };
 
   goToMain = () => {
     this.setState({
@@ -138,22 +118,17 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.films.length === 0) {
+    if (this.props.films.length === 0) {
       return <div className="loading-screen">LOADING</div>;
     } else {
       if (this.state.landingPage === "landing") {
         return (
           <div>
             <Landing
-              scrollTitle={
-                this.state.films.results[this.state.randomNum || 1].title
-              }
-              scrollEp={
-                this.state.films.results[this.state.randomNum || 1].episode_id
-              }
+              scrollTitle={this.props.films[this.state.randomNum || 1].title}
+              scrollEp={this.props.films[this.state.randomNum || 1].episode_id}
               scrollText={
-                this.state.films.results[this.state.randomNum || 1]
-                  .opening_crawl
+                this.props.films[this.state.randomNum || 1].opening_crawl
               }
             />
             <button onClick={this.goToMain} className="skip-landing-btn">
@@ -221,4 +196,21 @@ class App extends Component {
     }
   }
 }
-export default App;
+
+export const mapStateToProps = state => ({
+  films: state.films,
+  vehicles: state.vehicles,
+  planets: state.planets,
+  people: state.people
+});
+
+export const mapDispatchtoProps = dispatch => ({
+  getFilms: data => dispatch(getFilms(data)),
+  getPlanets: data => dispatch(getPlanets(data)),
+  getPeople: data => dispatch(getPeople(data)),
+  getVehicles: data => dispatch(getVehicles(data))
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchtoProps
+)(App);

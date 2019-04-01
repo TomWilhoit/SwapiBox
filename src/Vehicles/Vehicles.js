@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import "../Vehicles/Vehicles.scss";
+import { connect } from "react-redux";
 
 class Vehicles extends Component {
-  constructor() {
-    super();
-  }
-
   returnVehicles = () => {
-    let vehicleItem = this.props.vehiclesArray.map((vehicle, index) => {
+    let vehicleItem = this.props.vehicles.map((vehicle, index) => {
       return (
         <div key={index} className="card">
           <p>Name: {vehicle.name}</p>
@@ -21,7 +18,7 @@ class Vehicles extends Component {
   };
 
   render() {
-    if (this.props.vehiclesArray.length === 0) {
+    if (this.props.vehicles.length === 0) {
       return <div className="loading">Loading</div>;
     } else {
       return (
@@ -45,4 +42,14 @@ class Vehicles extends Component {
   }
 }
 
-export default Vehicles;
+export const mapStateToProps = state => ({
+  films: state.films,
+  vehicles: state.vehicles,
+  planets: state.planets,
+  people: state.people
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(Vehicles);
