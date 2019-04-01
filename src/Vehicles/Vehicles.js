@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../Vehicles/Vehicles.scss";
 import { connect } from "react-redux";
 
-class Vehicles extends Component {
+export class Vehicles extends Component {
   returnVehicles = () => {
     let vehicleItem = this.props.vehicles.map((vehicle, index) => {
       return (

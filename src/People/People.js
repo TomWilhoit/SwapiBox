@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../People/People.scss";
 import { connect } from "react-redux";
 
-class People extends Component {
+export class People extends Component {
   returnPeople = () => {
     if (this.props.people.length > 0) {
       let personItem = this.props.people.map((person, index) => {
@@ -21,7 +21,6 @@ class People extends Component {
   };
 
   render() {
-    console.log(this.props);
     if (this.props.people.length === 0) {
       return <div className="loading">Loading</div>;
     } else {
