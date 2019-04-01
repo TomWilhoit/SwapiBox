@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../Planets/Planets.scss";
 import { connect } from "react-redux";
 
-class Planets extends Component {
+ export class Planets extends Component {
   returnPlanets = () => {
     const planetItem = this.props.planets.map((planet, index) => {
       return (

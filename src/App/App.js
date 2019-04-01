@@ -5,11 +5,12 @@ import Planets from "../Planets/Planets";
 import People from "../People/People";
 import Vehicles from "../Vehicles/Vehicles";
 import { fetchData } from "../utils/API";
+import { randomNumberGen} from "../utils/randomNum"
 import jarjar from "../images/jarjar.jpg";
 import { getFilms, getVehicles, getPeople, getPlanets } from "../actions/index";
 import { connect } from "react-redux";
 
-class App extends Component {
+ export class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -20,7 +21,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchFilms();
-    this.randomNumberGen();
+    randomNumberGen();
     this.fetchPeople();
     this.fetchVehicles();
     this.fetchPlanets();
@@ -36,7 +37,6 @@ class App extends Component {
     const url = "https://swapi.co/api/people";
     const data = await fetchData(url);
     const result = await this.fetchHomeworlds(data.results)
-    console.log(result)
     this.props.getPeople(result);
   };
 
@@ -110,25 +110,21 @@ class App extends Component {
     });
   };
 
-  randomNumberGen = () => {
-    let ranNum = Math.floor(Math.random() * 6);
-    this.setState({
-      randomNum: ranNum
-    });
-  };
+  
 
   render() {
     if (this.props.films.length === 0) {
       return <div className="loading-screen">LOADING</div>;
     } else {
       if (this.state.landingPage === "landing") {
+        const randomNum = this.state.randomNum || 1
         return (
           <div>
             <Landing
-              scrollTitle={this.props.films[this.state.randomNum || 1].title}
-              scrollEp={this.props.films[this.state.randomNum || 1].episode_id}
+              scrollTitle={this.props.films[randomNum].title}
+              scrollEp={this.props.films[randomNum].episode_id}
               scrollText={
-                this.props.films[this.state.randomNum || 1].opening_crawl
+                this.props.films[randomNum].opening_crawl
               }
             />
             <button onClick={this.goToMain} className="skip-landing-btn">
