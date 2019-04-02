@@ -5,12 +5,12 @@ import Planets from "../Planets/Planets";
 import People from "../People/People";
 import Vehicles from "../Vehicles/Vehicles";
 import { fetchData } from "../utils/API";
-import { randomNumberGen} from "../utils/randomNum"
+import { randomNumberGen } from "../utils/randomNum";
 import jarjar from "../images/jarjar.jpg";
 import { getFilms, getVehicles, getPeople, getPlanets } from "../actions/index";
 import { connect } from "react-redux";
 
- export class App extends Component {
+export class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -36,15 +36,19 @@ import { connect } from "react-redux";
   fetchPeople = async () => {
     const url = "https://swapi.co/api/people";
     const data = await fetchData(url);
-    const result = await this.fetchHomeworlds(data.results)
+    const result = await this.fetchHomeworlds(data.results);
     this.props.getPeople(result);
   };
 
-  fetchHomeworlds = async (data) => {
+  fetchHomeworlds = async data => {
     const unresolvedPromises = data.map(async person => {
-      const result = await fetchData(person.homeworld)
-      const results = await { ...person, homeworld: result.name, population: result.population};
-      return results
+      const result = await fetchData(person.homeworld);
+      const results = await {
+        ...person,
+        homeworld: result.name,
+        population: result.population
+      };
+      return results;
     });
     return await Promise.all(unresolvedPromises);
   };
@@ -110,22 +114,19 @@ import { connect } from "react-redux";
     });
   };
 
-  
-
   render() {
+    console.log('Test')
     if (this.props.films.length === 0) {
       return <div className="loading-screen">LOADING</div>;
     } else {
       if (this.state.landingPage === "landing") {
-        const randomNum = this.state.randomNum || 1
+        const randomNum = this.state.randomNum || 1;
         return (
           <div>
             <Landing
               scrollTitle={this.props.films[randomNum].title}
               scrollEp={this.props.films[randomNum].episode_id}
-              scrollText={
-                this.props.films[randomNum].opening_crawl
-              }
+              scrollText={this.props.films[randomNum].opening_crawl}
             />
             <button onClick={this.goToMain} className="skip-landing-btn">
               Skip

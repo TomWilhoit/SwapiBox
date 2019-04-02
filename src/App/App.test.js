@@ -6,7 +6,13 @@ import * as randomNum from "../utils/randomNum";
 import { getFilms, getPlanets, getPeople, getVehicles } from "../actions/index";
 
 randomNum.randomNumberGen = jest.fn(() => 0);
-API.fetchData = jest.fn();
+
+jest.mock('../utils/API')
+API.fetchData.mockImplementation(() => Promise.resolve({
+  results: []
+})
+  
+)
 
 describe("App", () => {
   let wrapper;
